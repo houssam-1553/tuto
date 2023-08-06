@@ -22,7 +22,8 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   bool isLogoBig = false;
   late AnimationController _controller;
   final Duration animationDuration = Duration(milliseconds: 500);
@@ -59,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => NextPage(
+            builder: (context) => FirstPage(
               gradientColors: [
                 Colors.purple[300]!,
                 Colors.cyan,
@@ -97,8 +98,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             onTap: toggleLogoSize,
             child: AnimatedContainer(
               duration: animationDuration,
-              width: isLogoBig ? 400 : 000, // Set the desired width of the logo
-              height: isLogoBig ? 400 : 000, // Set the desired height of the logo
+              width: isLogoBig ? 400 : 000,
+              // Set the desired width of the logo
+              height: isLogoBig ? 400 : 000,
+              // Set the desired height of the logo
               child: LogoWidget(),
             ),
           ),
@@ -118,15 +121,14 @@ class LogoWidget extends StatelessWidget {
   }
 }
 
-class NextPage extends StatelessWidget {
+class FirstPage extends StatelessWidget {
   final List<Color> gradientColors;
 
-  NextPage({required this.gradientColors});
+  FirstPage({required this.gradientColors});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -142,111 +144,250 @@ class NextPage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  // Implement button functionality
-                  // For example, you can navigate to another page or perform some action.
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white70, // Change the button color
-                  foregroundColor: Colors.white, // Change the text color
-                  maximumSize: Size (200,120),
-
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10), // Adjust button padding
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10), // Round button corners
-                  ),
-                ),
-                child: Column(
-
-                  mainAxisSize: MainAxisSize.min,
-
-                  mainAxisAlignment: MainAxisAlignment.center,
-
-                  children: [
-                    Text('3 Players Mode',
-                      style: TextStyle( fontSize: 20),),
-                    Image.asset('assets/images/arbitre.png',),
-
-                    Center(
-
-
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        
-                        children: [
-                        Image.asset(
-                          'assets/images/user1.png',
-                        ),
-                          SizedBox(
-                            width: 20, //<-- SEE HERE
-                          ),
-                         Text('VS'),
-                          SizedBox(
-                            width: 20, //<-- SEE HERE
-                          ),
-                       Image.asset(
-                            'assets/images/user2.png',
-                       ),
+                  //***** hna ghir ntesti fiha
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RulesPage(
+                        gradientColors: [
+                          Colors.purple[300]!,
+                          Colors.cyan,
                         ],
                       ),
                     ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white70,
+                  // Change the button color
+                  foregroundColor: Colors.white,
+                  // Change the text color
+                  maximumSize: Size(200, 120),
 
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  // Adjust button padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(10), // Round button corners
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '3 Players Mode',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Image.asset(
+                      'assets/images/arbitre.png',
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/images/user1.png',
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('VS'),
+                          SizedBox(
+                            width: 20, //
+                          ),
+                          Image.asset(
+                            'assets/images/user2.png',
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
               SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  // Implement button functionality
-                  // For example, you can navigate to another page or perform some action.
+                  //****Zid hna navigator lel page ta3 team names
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.lime, // Change the button color
-                  foregroundColor: Colors.white, // Change the text color
-                  maximumSize: Size (200,120),
+                  backgroundColor: Colors.lime,
+                  // Change the button color
+                  foregroundColor: Colors.white,
+                  // Change the text color
+                  maximumSize: Size(200, 120),
 
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10), // Adjust button padding
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10), // Round button corners
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  // Adjust button padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(10), // Round button corners
                   ),
                 ),
                 child: Column(
-
                   mainAxisSize: MainAxisSize.min,
-
                   mainAxisAlignment: MainAxisAlignment.center,
-
                   children: [
-                    Text('5 Players Mode',
-                      style: TextStyle( fontSize: 20),),
-                    Image.asset('assets/images/arbitre.png',),
-
+                    Text(
+                      '5 Players Mode',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Image.asset(
+                      'assets/images/arbitre.png',
+                    ),
                     Center(
-
-
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
-
                         children: [
                           Image.asset(
                             'assets/images/user1.png',
-                          ),Image.asset(
+                          ),
+                          Image.asset(
                             'assets/images/user1.png',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20, //<-- SEE HERE
                           ),
                           Text('VS'),
-                          SizedBox(
+                          const SizedBox(
                             width: 20, //<-- SEE HERE
                           ),
                           Image.asset(
                             'assets/images/user2.png',
-                          ),Image.asset(
+                          ),
+                          Image.asset(
                             'assets/images/user2.png',
                           ),
                         ],
                       ),
                     ),
-
                   ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RulesPage extends StatelessWidget {
+  final List<Color> gradientColors;
+
+  RulesPage({required this.gradientColors});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: gradientColors,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                child: Text(
+                  "First challenge",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white60,
+                  ),
+                ),
+              ),
+              Card(
+                color: Color(0xF6E5E5B8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  width: 300,
+                  height: 400,
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Text(
+                          'Challenge Rules',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipi',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipi',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipi',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipi',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Lorem ipsum dolor sit amet, consectetur adipi',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FirstPage(
+                        gradientColors: [
+                          Colors.purple[300]!,
+                          Colors.cyan,
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightGreen,
+                  // Change the button color
+                  foregroundColor: Colors.white,
+                  // Change the text color
+                  maximumSize: Size(200, 50),
+
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  // Adjust button padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(10), // Round button corners
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'Start the Challenge',
+                    style: TextStyle(fontSize: 18),
+                    maxLines: 1,
+                  ),
                 ),
               ),
             ],
