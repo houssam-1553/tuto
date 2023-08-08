@@ -1,20 +1,38 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  /*SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);*/
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Hide the status bar for the entire app
+
+
+    // Set the SystemUiOverlayStyle to match your design preferences
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Lalezar-Regular', // Specify your custom font family here
       ),
       home: SplashScreen(),
+      /*home: FirstPage(gradientColors: [
+        Colors.purple[300]!,
+        Colors.cyan,
+      ],),*/
     );
-  }
+    }
 }
 
 class SplashScreen extends StatefulWidget {
@@ -554,8 +572,9 @@ class passwordPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(20),
+      body:SafeArea(
+      child :Container(
+        padding: EdgeInsets.all(30),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
@@ -568,15 +587,14 @@ class passwordPage1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                child: Text(
+               Text(
                   "Password challenge",
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.white60,
                   ),
                 ),
-              ),
+
               SizedBox(
                 height: 20,
               ),
@@ -595,15 +613,14 @@ class passwordPage1 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
 
                     children: [
-                      Center(
-                        child: Text(
+                      Text(
                           'Harry Maguire',
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
+
                       Image.asset("assets/images/harryy.png"
                       ,height: 200,
                         width: 200,
@@ -624,7 +641,7 @@ class passwordPage1 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FirstPage(
+                          builder: (context) => passwordPage1(
                             gradientColors: [
                               Colors.purple[300]!,
                               Colors.cyan,
@@ -656,12 +673,55 @@ class passwordPage1 extends StatelessWidget {
                     style:TextStyle(fontSize: 20),),
 
                   ),
+                  Card(
+                    color: Color(0xF6E5E5B8),
+
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Container(
+                      width: 100,
+
+                      padding: EdgeInsets.all(10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        children: [
+                          Image.asset("assets/images/user2.png"
+                          ),
+                          Text(
+                            '0',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Text(
+                            '-',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '0',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Image.asset("assets/images/user1.png"),
+                        ],
+                      ),
+                    ),
+                  ),
                   ElevatedButton.icon(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FirstPage(
+                          builder: (context) => passwordPage1(
                             gradientColors: [
                               Colors.purple[300]!,
                               Colors.cyan,
@@ -688,14 +748,17 @@ class passwordPage1 extends StatelessWidget {
                       padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                     ),
                     icon: Image.asset("assets/images/user1.png"),
-                    label: Text("+1"),
+                    label: Text("+1",
+                      style:TextStyle(fontSize: 20),),
 
 
                   ),
                 ],
               ),
               SizedBox(height: 20,),
-              ElevatedButton.icon(
+              Expanded(child: Align(
+                alignment: Alignment.bottomCenter,
+                child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -731,10 +794,13 @@ class passwordPage1 extends StatelessWidget {
 
 
               ),
+              ),
+              ),
             ],
 
           ),
         ),
+      ),
       ),
     );
   }
