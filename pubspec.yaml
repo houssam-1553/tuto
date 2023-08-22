@@ -53,10 +53,14 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
-    - family: Lalezar-Regular
+    - family: Nunito
       fonts:
-        - asset: assets/fonts/Lalezar-Regular.ttf
-          weight: 700
+        - asset: assets/fonts/Nunito-VariableFont_wght.ttf
+          weight: 900
+#    - family: Lalezar-Regular
+#      fonts:
+#        - asset: assets/fonts/Lalezar-Regular.ttf
+#          weight: 700
   assets:
     - assets/images/
 
